@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Welcome to Thabo's Laravel CMS. Please register new user below:
                 </div>
             </div>
         </div>
