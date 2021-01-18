@@ -32,9 +32,23 @@ class UserDataController extends Controller
         return view('create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return "Saved";;
+		$this->validate($request,[
+            'name' => 'required',
+            'surname' => 'required',
+            'idNumber' => 'required',
+            'mobileNumber' => 'required',
+            'email' => 'required',
+            'dateOfBirth' => 'required',
+            'language' => 'required',
+            'interests' => 'required',
+        ]);
+  
+        UserData::create($request->all());
+   
+        return redirect()->route('user.create')
+                        ->with('success','User created successfully.');
     }
 
 }

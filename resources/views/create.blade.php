@@ -62,13 +62,13 @@
 						<label for="language" class="col-md-4 control-label">Language:</label>
 						<div class="col-md-6">
 							<select id="language" name="language" class="form-control">
-								<option value="volvo">English</option>
-								<option value="saab">Afrikaans</option>
-								<option value="fiat">Zulu</option>
-								<option value="audi">Tswana</option>
-								<option value="audi">Pedi</option>
-								<option value="audi">Venda</option>
-								<option value="audi">Xitsonga</option>
+								<option value="English">English</option>
+								<option value="Afrikaans">Afrikaans</option>
+								<option value="Zulu">Zulu</option>
+								<option value="Tswana">Tswana</option>
+								<option value="Pedi">Pedi</option>
+								<option value="Venda">Venda</option>
+								<option value="Xitsonga">Xitsonga</option>
 							</select>
 						</div>
 					  
@@ -77,14 +77,14 @@
 						<div class="col-md-6">
 							 <div class="multiselect">
 								<div class="selectBox form-control" onclick="showCheckboxes()">
-								  <select>
+								  <select id="interests" name="interests">
 									<option>Select Your Interest</option>
 								  </select>
 								  <div class="overSelect"></div>
 								</div>
 								<div id="checkboxes">
 								  <label for="one">
-										<input type="checkbox" id="one" />First Interest</label>
+										<input type="checkbox" />First Interest</label>
 									<label for="two">
 										<input type="checkbox" id="two" />Second Interest</label>
 									<label for="three">
