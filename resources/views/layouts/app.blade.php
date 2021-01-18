@@ -85,6 +85,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+	<script>
+		// obtain reference to checkboxes named sports[]
+		var interests = document.forms['myform'].elements[ 'interests[]' ];
+		
+		// using reference to sports obtained above
+		for (var i=0, len=interests.length; i<len; i++) {
+			interests[i].onclick = doSomething;
+		}
+	</script>
 	
 </body>
 </html>

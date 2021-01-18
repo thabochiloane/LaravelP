@@ -23,7 +23,7 @@
 					</div>
 				@endif
 				   
-				<form class="form-horizontal" action="{{ route('user.store') }}" method="POST">
+				<form id="myform" class="form-horizontal" action="{{ route('user.store') }}" method="POST">
 					{{ csrf_field() }}
 				 
 					 <div class="row">
@@ -71,33 +71,20 @@
 								<option value="Xitsonga">Xitsonga</option>
 							</select>
 						</div>
-					  
-					  
-						<label for="interests" class="col-md-4 control-label">Interests:</label> 
-						<div class="col-md-6">
-							 <div class="multiselect">
-								<div class="selectBox form-control" onclick="showCheckboxes()">
-								  <select id="interests" name="interests">
-									<option>Select Your Interest</option>
-								  </select>
-								  <div class="overSelect"></div>
-								</div>
-								<div id="checkboxes">
-								  <label for="one">
-										<input type="checkbox" />First Interest</label>
-									<label for="two">
-										<input type="checkbox" id="two" />Second Interest</label>
-									<label for="three">
-										<input type="checkbox" id="three" />Third Interest</label>
-									<label for="four">
-										<input type="checkbox" id="three" />Third Interest</label>
-									<label for="five">
-										<input type="checkbox" id="three" />Third Interest</label>
-								</div>
-							</div>
-						</div>
 
-						
+						<label for="interests" class="col-md-4 control-label">Interests:</label>
+						<div class="col-md-6">
+							<fieldset>
+								<p>
+									<label><input type="checkbox" name="interests" value="cycling" /> cycling</label>
+									<label><input type="checkbox" name="interests" value="running" /> running</label>
+									<label><input type="checkbox" name="interests" value="visit gym" /> visit gym</label>
+									<label><input type="checkbox" name="interests" value="swimming" /> swimming</label>
+									<label><input type="checkbox" name="interests" value="team sports" /> team sport(s)</label>
+									<label><input type="checkbox" name="interests" value="other" /> other</label>
+								</p>
+							</fieldset>
+						</div>
 						
 						<div class="col-xs-12 col-sm-12 col-md-12 text-center">
 								<button type="submit" class="btn btn-primary">Submit</button>

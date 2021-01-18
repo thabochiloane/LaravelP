@@ -47,8 +47,44 @@ class UserDataController extends Controller
   
         UserData::create($request->all());
    
-        return redirect()->route('user.create')
+        return redirect()->route('user.index')
                         ->with('success','User created successfully.');
+    }
+	
+	/**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\UserData  $userData
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+        $userData = UserData::find($id);
+        $userData->name = request('name');
+        $userData->surname = request('surname');
+        $userData->idNumber = request('idNumber');
+        $userData->mobileNumber = request('mobileNumber');
+        $userData->email = request('email');
+        $userData->dateOfBirth = request('dateOfBirth');
+        $userData->language = request('language');
+        $userData->interests = request('interests');
+		
+        $userData->save();
+			$this->validate($request,[
+			'name' => 'required',
+			'surname' => 'required',
+			'idNumber' => 'required',
+			'mobileNumber' => 'required',
+			'email' => 'required',
+			'dateOfBirth' => 'required',
+			'language' => 'required',
+			'interests' => 'required',
+         ]);
+        $userData->update($request->all());
+  
+        return redirect()->route('user.index')
+                        ->with('success','User updated successfully');
     }
 
 }
