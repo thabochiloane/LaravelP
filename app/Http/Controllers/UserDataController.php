@@ -18,18 +18,23 @@ class UserDataController extends Controller
     {
         $userData = UserData::latest()->paginate(5);
   
-        return view('userData.index',compact('userData'))
+        return view('index',compact('userData'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-	/**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('userData.create');
+        return view('create');
+    }
+
+    public function store()
+    {
+        return "Saved";;
     }
 
 }

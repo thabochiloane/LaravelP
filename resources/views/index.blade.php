@@ -1,4 +1,4 @@
-@extends('userData.layout')
+@extends('layouts.app')
  
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2>Dashboard</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('userData.create') }}"> Create New User</a>
+                <a class="btn btn-success" href="{{ route('user.create') }}"> Create New User</a>
             </div>
         </div>
     </div>
@@ -43,13 +43,10 @@
             <td>{{ $uData->language }}</td>
             <td>{{ $uData->interests }}</td>
             <td>
-                <form action="{{ route('userData.destroy',$uData->id) }}" method="POST">
+                <form action="{{ route('destroy',$uData->id) }}" method="POST">
                    
-                    <a class="btn btn-info" href="{{ route('userData.show',$uData->id) }}">Show</a>
-
- 
-    
-                    <a class="btn btn-primary" href="{{ route('userData.edit',$uData->id) }}">Edit</a>
+                    <a class="btn btn-info" href="{{ route('show',$uData->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('edit',$uData->id) }}">Edit</a>
                     <!-- SUPPORT ABOVE VERSION 5.5 -->
                     {{-- @csrf
                     @method('DELETE') --}} 
