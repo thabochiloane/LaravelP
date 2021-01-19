@@ -23,7 +23,7 @@
 					</div>
 				@endif
   
-				<form id="myupdateform" class="form-horizontal" action="{{ route('user.edit', $userData->id) }}" method="POST">
+				<form id="myupdateform" class="form-horizontal" action="{{ route('user.update', $userData->id) }}" method="POST">
 					{{ csrf_field() }}
 					{{ method_field('PATCH') }}
 			   
@@ -61,8 +61,8 @@
 
 						<label for="language" class="col-md-4 control-label">Language:</label>
 						<div class="col-md-6">
-							<select id="language" name="language" value="{{ $userData->language }}" class="form-control">
-								<option value="English">English</option>
+							<select id="language" name="language" class="form-control">
+								<option value="{{$userData->language}}">{{$userData->language}}</option>
 								<option value="Afrikaans">Afrikaans</option>
 								<option value="Zulu">Zulu</option>
 								<option value="Tswana">Tswana</option>
@@ -74,7 +74,7 @@
 						
 						<label for="interests" class="col-md-4 control-label">Interests:</label>
 						<div class="col-md-6">
-							<fieldset  value="{{ $userData->interests }}" >
+							<fieldset>
 								<p>
 									<label><input type="checkbox" name="interests" value="cycling" /> cycling</label>
 									<label><input type="checkbox" name="interests" value="running" /> running</label>

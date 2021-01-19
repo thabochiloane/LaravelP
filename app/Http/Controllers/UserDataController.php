@@ -69,10 +69,10 @@ class UserDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update($id , Request $request)
     {
-        $userData->save();
-			$this->validate($request,[
+        
+		$this->validate($request,[
 			'name' => 'required',
 			'surname' => 'required',
 			'idNumber' => 'required',
@@ -81,11 +81,13 @@ class UserDataController extends Controller
 			'dateOfBirth' => 'required',
 			'language' => 'required',
 			'interests' => 'required',
-         ]);
-        $userData->update($request->all());
-  
+		]);
+		
+        
+        UserData::create($request->all());
+   
         return redirect()->route('user.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','User Updated successfully.');
     }
 	
 	
@@ -110,7 +112,6 @@ class UserDataController extends Controller
 		
 		$userData = UserData::find($id);
         return view('update',compact('userData','id'));
-       
     }
 
 	/**
