@@ -28,7 +28,7 @@ Route::delete('/destroy.{id}', 'UserDataController@destroy')->name('user.destroy
 Route::get('/show.{id}', 'UserDataController@show')->name('user.show');
 
 Route::patch('/update.{id}', 'UserDataController@update')->name('user.update');
-Route::post('/edit.{id}', 'UserDataController@edit')->name('user.edit');
+Route::get('/edit.{id}', 'UserDataController@edit')->name('user.edit');
 
 
 
