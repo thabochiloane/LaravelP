@@ -51,6 +51,18 @@ class UserDataController extends Controller
                         ->with('success','User created successfully.');
     }
 	
+	
+	/**
+     * Show the form for updating resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update()
+    {
+        return view('update');
+    }
+	
+	
 	/**
      * Update the specified resource in storage.
      *
@@ -58,9 +70,9 @@ class UserDataController extends Controller
      * @param  \App\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function view(Request $request, $id)
     {
-        $userData = UserData::find($id);
+        $userData = UserData::find($userData.$id);
         $userData->name = request('name');
         $userData->surname = request('surname');
         $userData->idNumber = request('idNumber');
