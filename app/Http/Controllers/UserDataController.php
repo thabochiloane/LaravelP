@@ -51,15 +51,28 @@ class UserDataController extends Controller
                         ->with('success','User created successfully.');
     }
 	
+	/**
+     * Display the specified resource.
+     *
+     * @param  \App\UserData  $userData
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $userData = UserData::find($id);
+        return view('show',compact('userData', 'id'));
+    }
+	
 	
 	/**
      * Show the form for updating resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update($id)
     {
-        return view('update');
+        $userData = UserData::find($id);
+        return view('update',compact('userData','id'));
     }
 	
 	
@@ -70,9 +83,9 @@ class UserDataController extends Controller
      * @param  \App\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function view(Request $request, $id)
+    public function edit($id, Request $request)
     {
-        $userData = UserData::find($userData.$id);
+        $userData = UserData::find($id);
         $userData->name = request('name');
         $userData->surname = request('surname');
         $userData->idNumber = request('idNumber');
@@ -99,4 +112,17 @@ class UserDataController extends Controller
                         ->with('success','User updated successfully');
     }
 
+	/**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\UserData  $userData
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        UserData::find($id)->delete();
+  
+        return redirect()->route('user.index')
+                        ->with('success','User deleted successfully');
+    }
 }

@@ -43,10 +43,10 @@
             <td>{{ $uData->language }}</td>
             <td>{{ $uData->interests }}</td>
             <td>
-                <form action="{{ route('destroy',$uData->id) }}" method="POST">
+                <form action="{{ route('user.destroy', $uData->id) }}" method="POST">
                    
-                    <a class="btn btn-info" href="{{ route('show',$uData->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('edit',$uData->id) }}">Edit</a>
+                    <a class="btn btn-info" href="{{ route('user.show',$uData->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('user.edit',$uData->id) }}">Edit</a>
                     <!-- SUPPORT ABOVE VERSION 5.5 -->
                     {{-- @csrf
                     @method('DELETE') --}} 
@@ -54,7 +54,6 @@
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                   
-      
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>

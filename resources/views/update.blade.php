@@ -23,7 +23,7 @@
         </div>
     @endif
   
-    <form action="{{ route('user.edit', $user->id) }}" method="POST">
+    <form action="{{ route('user.edit', $userData->id) }}" method="POST">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
    
@@ -31,13 +31,13 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{ $userData->name }}" class="form-control" placeholder="Name">
                 </div>
             </div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Surname:</strong>
-                    <input type="text" name="surname" value="{{ surname }}" class="form-control" placeholder="Surname">
+                    <input type="text" name="surname" value="{{ $userData->surname }}" class="form-control" placeholder="Surname">
                 </div>
             </div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
@@ -82,6 +82,5 @@
         </div>
    
     </form>
-	
 	
 @endsection 
