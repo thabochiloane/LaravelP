@@ -24,10 +24,10 @@ Route::get('/create', 'UserDataController@create')->name('user.create');
 Route::post('/store', 'UserDataController@store')->name('user.store');
 
 Route::get('/index', 'UserDataController@index')->name('user.index');
-Route::get('/destroy.{id}', 'UserDataController@destroy')->name('user.destroy');
+Route::delete('/destroy.{id}', 'UserDataController@destroy')->name('user.destroy');
 Route::get('/show.{id}', 'UserDataController@show')->name('user.show');
 
-Route::get('/update', 'UserDataController@update')->name('user.update');
+Route::patch('/update.{id}', 'UserDataController@update')->name('user.update');
 Route::post('/edit.{id}', 'UserDataController@edit')->name('user.edit');
 
 

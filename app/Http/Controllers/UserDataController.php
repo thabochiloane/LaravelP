@@ -121,7 +121,6 @@ class UserDataController extends Controller
     public function destroy($id)
     {
         UserData::find($id)->delete();
-  
         return redirect()->route('user.index')
                         ->with('success','User deleted successfully');
     }

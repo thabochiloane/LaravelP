@@ -8,7 +8,10 @@
                 <div class="panel-heading"><strong>Welcome To My Laravel Assessment</strong></div>
 
                 <div class="panel-body">
-                    Welcome back, this is the web application where user can subscribe more users into the system. Click on Login to login into the system or click on register to register a new Admin user.	
+                    Welcome back, this is the web application where user can subscribe more users into the system. 
+					Click on Login to login into the system or click on register below to register a new member.<br /><br />
+					
+					 <a class="btn btn-success" href="{{ route('user.create') }}"> Create New User</a>
 				</div>
             </div>
         </div>
