@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\UserData;
 use Illuminate\Http\Request;
 
+use Mail;
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
 
 class UserDataController extends Controller
 {
+	
     /**
      * Display a listing of the resource.
      *
@@ -46,10 +50,48 @@ class UserDataController extends Controller
         ]);
   
         UserData::create($request->all());
-   
-        return redirect()->route('user.index')
-                        ->with('success','User created successfully.');
+	
+
+        $data = array(
+          'name' => $request->name,
+          'email' => $request->email,
+		  'subject' => 'Registration email',
+        );
+
+        Mail::send('mail', compact('data'), function($message) use ($data){
+          $message->from(env('MAIL.USERNAME'));
+          $message->to($data['email']);
+          $message->subject($data['subject']);
+        });
+          
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return redirect()->route('user.index')
+				->with('success','User created successfully.');
+
     }
+	
+	/**
+     * Send an Email confirmation after registration.
+     *
+     * @param  \App\UserData  $userData
+     * @return \Illuminate\Http\Response
+     */
+	public function sendEmail(User $user)
+	{
+		return ("email sent");
+	}
+	
 	
 	/**
      * Display the specified resource.
