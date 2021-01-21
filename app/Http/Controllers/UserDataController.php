@@ -37,7 +37,7 @@ class UserDataController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {		
 		$this->validate($request,[
             'name' => 'required',
             'surname' => 'required',
@@ -49,9 +49,15 @@ class UserDataController extends Controller
             'interests' => 'required',
         ]);
   
-        UserData::create($request->all());
-	
-
+		$input = $request->all();
+        $input['interests'] = $request->input('interests');
+		
+		
+		print_r($input);
+        UserData::create($input);
+		return redirect()->route('user.index')
+			->with('success','User created successfully.');
+/*
         $data = array(
           'name' => $request->name,
           'email' => $request->email,
@@ -63,21 +69,10 @@ class UserDataController extends Controller
           $message->to($data['email']);
           $message->subject($data['subject']);
         });
-          
+          */
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return redirect()->route('user.index')
-				->with('success','User created successfully.');
+		//return redirect()->route('user.index')
+			//	->with('success','User created successfully.');
 
     }
 	
