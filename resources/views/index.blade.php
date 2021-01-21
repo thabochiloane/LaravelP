@@ -41,7 +41,10 @@
             <td>{{ $uData->email }}</td>
             <td>{{ $uData->dateOfBirth }}</td>
             <td>{{ $uData->language }}</td>
-            <td>{{ $uData->interests }}</td>
+            <td>@foreach($uData->interests as $value)
+                    {{$value}},
+                @endforeach
+			</td>
             <td>
                 <form action="{{ route('user.destroy', $uData->id) }}" method="POST">
                    

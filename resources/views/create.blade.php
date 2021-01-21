@@ -23,9 +23,9 @@
 					</div>
 				@endif
 				   
-				<form id="myform" class="form-horizontal" action="{{ route('user.store') }}" method="POST">
+				<form id="myform" class="form-horizontal" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
-				 
+					@csrf
 					 <div class="row">
 					 
 						<label for="name" class="col-md-4 control-label">Name</label>
@@ -76,12 +76,12 @@
 						<div class="col-md-6">
 							<fieldset>
 								<p>
-									<label><input type="checkbox" name="interests" value="cycling" /> cycling</label>
-									<label><input type="checkbox" name="interests" value="running" /> running</label>
-									<label><input type="checkbox" name="interests" value="visit gym" /> visit gym</label>
-									<label><input type="checkbox" name="interests" value="swimming" /> swimming</label>
-									<label><input type="checkbox" name="interests" value="team sports" /> team sport(s)</label>
-									<label><input type="checkbox" name="interests" value="other" /> other</label>
+									<label><input type="checkbox" name="interests[]" value="cycling" /> cycling</label>
+									<label><input type="checkbox" name="interests[]" value="running" /> running</label>
+									<label><input type="checkbox" name="interests[]" value="visit gym" /> visit gym</label>
+									<label><input type="checkbox" name="interests[]" value="swimming" /> swimming</label>
+									<label><input type="checkbox" name="interests[]" value="team sports" /> team sport(s)</label>
+									<label><input type="checkbox" name="interests[]" value="other" /> other</label>
 								</p>
 							</fieldset>
 						</div>
