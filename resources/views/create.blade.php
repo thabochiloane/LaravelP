@@ -25,7 +25,7 @@
 				   
 				<form id="myform" class="form-horizontal" action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
 					{{ csrf_field() }}
-					@csrf
+					
 					 <div class="row">
 					 
 						<label for="name" class="col-md-4 control-label">Name</label>

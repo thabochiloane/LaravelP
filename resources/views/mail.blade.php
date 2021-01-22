@@ -1,2 +1,2 @@
-<h1>Hi, THabo</h1>
-l<p>Sending Mail from Laravel.</p>
+<h1>Hi</h1>
+<p>Welcome to our assigment application</p>

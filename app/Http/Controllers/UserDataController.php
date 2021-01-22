@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\UserData;
 use Illuminate\Http\Request;
-
+use DB;
 use Mail;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\MailController;
 
 
 class UserDataController extends Controller
@@ -33,7 +34,7 @@ class UserDataController extends Controller
      */
     public function create()
     {
-        return view('create');
+     return view('create');
     }
 
     public function store(Request $request)
@@ -51,28 +52,24 @@ class UserDataController extends Controller
   
 		$input = $request->all();
         $input['interests'] = $request->input('interests');
-		
-		
-		print_r($input);
+    
+        $arrayTostring = implode(",",$request->input('interests'));
+
+        $useremail = $request->input('email');
+
+        $input['interests'] = $arrayTostring;
+        
+         //send mail
+         Mail::send(['text'=>'mail'], ['user' => $input], function ($message) use ($input) {
+            $message->to($input['email'], '')->subject
+               ('Sign up Confirmation');
+            $message->from('noreplay@assignmentapp.co.za','Support');
+         });
+        
         UserData::create($input);
+
 		return redirect()->route('user.index')
 			->with('success','User created successfully.');
-/*
-        $data = array(
-          'name' => $request->name,
-          'email' => $request->email,
-		  'subject' => 'Registration email',
-        );
-
-        Mail::send('mail', compact('data'), function($message) use ($data){
-          $message->from(env('MAIL.USERNAME'));
-          $message->to($data['email']);
-          $message->subject($data['subject']);
-        });
-          */
-		
-		//return redirect()->route('user.index')
-			//	->with('success','User created successfully.');
 
     }
 	
@@ -119,10 +116,15 @@ class UserDataController extends Controller
 			'language' => 'required',
 			'interests' => 'required',
 		]);
-		
         
-        UserData::create($request->all());
-   
+        $input = $request->all();
+        $input['interests'] = $request->input('interests');
+    
+        $arrayTostring = implode(",",$request->input('interests'));
+
+		$input['interests'] = $arrayTostring;
+        UserData::create($input);
+        
         return redirect()->route('user.index')
                         ->with('success','User Updated successfully.');
     }
@@ -135,20 +137,13 @@ class UserDataController extends Controller
      * @param  \App\UserData  $userData
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Request $request)
+    public function edit($id)
     {
-        $userData = UserData::find($id);
-        $userData->name = request('name');
-        $userData->surname = request('surname');
-        $userData->idNumber = request('idNumber');
-        $userData->mobileNumber = request('mobileNumber');
-        $userData->email = request('email');
-        $userData->dateOfBirth = request('dateOfBirth');
-        $userData->language = request('language');
-        $userData->interests = request('interests');
-		
-		$userData = UserData::find($id);
-        return view('update',compact('userData','id'));
+        $userData = userData::where('id', $id)->first();   
+        
+        $userData->interests = explode(",",$userData->interests);
+       
+        return view('update',compact('userData'));
     }
 
 	/**

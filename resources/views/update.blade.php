@@ -76,12 +76,12 @@
 						<div class="col-md-6">
 							<fieldset>
 								<p>
-									<label><input type="checkbox" name="interests" value="cycling" /> cycling</label>
-									<label><input type="checkbox" name="interests" value="running" /> running</label>
-									<label><input type="checkbox" name="interests" value="visit gym" /> visit gym</label>
-									<label><input type="checkbox" name="interests" value="swimming" /> swimming</label>
-									<label><input type="checkbox" name="interests" value="team sports" /> team sport(s)</label>
-									<label><input type="checkbox" name="interests" value="other" /> other</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("cycling", $userData->interests)?'checked':''); ?> value="cycling">cycling</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("running", $userData->interests)?'checked':''); ?> value="running">running</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("visit gym", $userData->interests)?'checked':''); ?> value="visit gym">visit gym</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("swimming", $userData->interests)?'checked':''); ?> value="swimming">swimming</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("team sports", $userData->interests)?'checked':''); ?> value="visit gym">team sports</label>
+									<label><input type="checkbox" name="interests[]" <?php echo (in_array("other", $userData->interests)?'checked':''); ?> value="other">other</label>
 								</p>
 							</fieldset>
 						</div>

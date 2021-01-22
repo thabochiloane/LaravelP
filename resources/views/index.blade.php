@@ -41,10 +41,7 @@
             <td>{{ $uData->email }}</td>
             <td>{{ $uData->dateOfBirth }}</td>
             <td>{{ $uData->language }}</td>
-            <td>@foreach($uData->interests as $value)
-                    {{$value}},
-                @endforeach
-			</td>
+            <td>{{ $uData->interests }}</td>
             <td>
                 <form action="{{ route('user.destroy', $uData->id) }}" method="POST">
                    
@@ -57,7 +54,7 @@
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                   
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
